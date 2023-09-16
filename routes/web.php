@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DistanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/calculate-distance', 'DistanceController@calculateDistance');
+Route::get('/download-csv', [DistanceController::class,'calculateDistance'])->name('download.csv');
