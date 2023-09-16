@@ -7,6 +7,7 @@ use App\Services\DistanceMatrix;
 use Exception;
 use Log;
 use App\Traits\DistanceTrait;
+use App\Models\Address;
 
 class DistanceController extends Controller
 {
@@ -20,14 +21,14 @@ class DistanceController extends Controller
 
     public function calculateDistance() {
         try {
-            $origin = $this->getOrigin();
-            $destinations = $this->getDestinations();
+            $origin = Address::getOrigin();
+            $destinations = Address::getDestinations();
             $sortedData = $this->getSortedData($origin, $destinations);
             $csvData = $this->getCsvData($sortedData);
             return $this->createCsv($csvData);
         } catch (Exception $e) {
             Log::error($e);
-            return response()->json(['status' => false , 'message' => 'something went wrong'],500);
+            return $e;
         }
     }
 
