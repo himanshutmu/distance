@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class DistanceController extends Controller
 {
-    //
+    public function calculateDistance(Request $request) {
+        
+    }
 }
