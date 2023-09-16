@@ -34,6 +34,10 @@ Run the database seeder
 
     php artisan db:seed
 
+Generate application key
+
+    php artisan key:generate
+
 Start the local development server
 
     php artisan serve
