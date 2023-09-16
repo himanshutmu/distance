@@ -1,20 +1,12 @@
 <?php
 
 namespace App\Traits;
-use App\Models\Address;
+
 use File;
 use Response;
 
 trait DistanceTrait { 
-
-    public function getOrigin() {
-        return Address::where('is_headquarter',1)->value('address');
-    }
-
-    public function getDestinations() {
-        return Address::where('is_headquarter', 0)->pluck('address')->toArray();
-    }
-
+    
     public function getSortedData($origin, $destinations) {
         foreach($destinations as $destination) {
             $data = $this->distanceMatrix->getDistanceData($origin, $destination);
